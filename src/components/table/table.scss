@@ -1,0 +1,36 @@
+.table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    color: black;
+    border: 1px solid #d5d5d5;
+    border-radius: 10px;
+    font-weight: 400;
+}
+
+.table tr {
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.table thead {
+    background-color: #FCFDFD;
+}
+
+.table tbody {
+    background-color: #fff;
+}
+
+.table th,
+.table td {
+    padding: 14px 20px;
+    text-align: left;
+}
+
+
+// .table th:first-child {
+//     border-radius: 14px 0 0 0;
+// }
+
+// .table th:last-child {
+//     border-radius: 0 14px 0 0;
+// }
