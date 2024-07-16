@@ -3,23 +3,41 @@ import Table from '../../../components/table/Table'
 import axios from 'axios'
 
 import './store.scss'
-
-const API = "https://dummyjson.com"
+import { useGetProductsQuery } from '../../../context/productsApi'
 
 const Store = () => {
 
-  const [data, setData] = useState(null)
+  const { data } = useGetProductsQuery()
 
-  useEffect(() => {
-    axios
-      .get(`${API}/users`)
-      .then(res => setData(res.data.users))
-      .catch(err => console.log(err))
-  }, [])
+  console.log(data);
+
+  let table = data?.innerData.map(el => (
+    <tr key={el._id}>
+      <td>{el.__v}</td>
+      <td>{el.title}</td>
+      <td>{el.quantity}</td>
+      <td>{el.units}</td>
+      <td> <p style={{ backgroundColor: `${el.price < 0 ? "#ef38264d" : "#00b69b66"}`, color: `${el.price < 0 ? "red" : "green"}` }}> {el.price}</p></td>
+    </tr>
+  ))
 
   return (
     <div className='store'>
-      <Table data={data} />
+      <table className='store__table'>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Units</th>
+            <th>Budget</th>
+          </tr>
+        </thead>
+        <tbody>
+          {table}
+        </tbody>
+
+      </table>
     </div>
   )
 }

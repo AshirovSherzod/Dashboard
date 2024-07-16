@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Table from '../../../components/table/Table'
-import axios from 'axios'
 
 import './seller.scss'
-
-const API = "https://dummyjson.com"
-
+import { useGetSellersQuery } from '../../../context/sellerApi'
 
 const Seller = () => {
 
-  const [data, setData] = useState(null)
+  const { data } = useGetSellersQuery()
 
-  useEffect(() => {
-    axios
-      .get(`${API}/users`)
-      .then(res => setData(res.data.users))
-      .catch(err => console.log(err))
-  }, [])
-
+  console.log(data);
   return (
     <div className='seller'>
-      <Table data={data} />
+      <Table data={data?.innerData} />
     </div>
   )
 }

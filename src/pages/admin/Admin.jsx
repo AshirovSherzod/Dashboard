@@ -4,13 +4,16 @@ import { Outlet } from 'react-router-dom'
 
 import './admin.scss'
 import AdminHeader from '../../components/adminHeader/AdminHeader'
+import { useSelector } from 'react-redux'
 
 const Admin = () => {
+
+  const showSidebar = useSelector(state => state.showheader.value)
   return (
     <main className='admin'>
-      <Sidebar />
-      <div className="admin__content">
-        <AdminHeader />
+      <AdminHeader />
+      <div className={`admin__content ${showSidebar ? "admin__move" : ""}`}>
+        <Sidebar />
         <Outlet />
       </div>
     </main>

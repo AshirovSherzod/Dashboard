@@ -1,5 +1,46 @@
 .store {
     background-color: #F5F6FA;
-    margin-top: 103px;
+    margin-top: 80px;
+    min-height: 100vh;
     padding: 80px 0px;
+
+    &__table {
+        width: 95%;
+        margin: auto;
+        border-collapse: collapse;
+        color: black;
+        border: 1px solid #d5d5d5;
+        border-radius: 10px;
+        overflow: hidden;
+        font-weight: 400 !important;
+        // background-color: ;
+        p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            max-width: 200px;
+        }
+    }
+    
+    &__table tr {
+        border-bottom: 1px solid #d5d5d5;
+    }
+    
+    &__table thead {
+        background-color: #FCFDFD;
+    }
+    
+    &__table tbody {
+        background-color: #fff;
+    }
+    
+    &__table th,
+    &__table td {
+        padding: 14px 20px;
+        text-align: left;
+    }
 }
+

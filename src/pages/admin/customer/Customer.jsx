@@ -2,24 +2,18 @@ import React, { useEffect, useState } from 'react'
 
 import './customer.scss'
 import Table from '../../../components/table/Table.jsx'
-import axios from 'axios'
-
-const API = "https://dummyjson.com"
+import { useGetCustomersQuery } from '../../../context/customerApi/index.js'
+import { useSelector } from 'react-redux'
 
 const Customer = () => {
 
-  const [data, setData] = useState(null)
+  const showSidebar = useSelector(state => state.showheader.value)
+  const {data} = useGetCustomersQuery()
 
-  useEffect(() => {
-    axios
-      .get(`${API}/users`)
-      .then(res => setData(res.data.users))
-      .catch(err => console.log(err))
-  }, [])
 
   return (
-    <div className='customer'>
-      <Table data={data} />
+    <div className={`customer ${ showSidebar ? "customer__move" : ""}`}>
+      <Table data={data?.innerData} />
     </div>
 
   )

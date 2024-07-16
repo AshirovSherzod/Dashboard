@@ -5,13 +5,19 @@ import { FaBell } from 'react-icons/fa'
 import './adminHeader.scss'
 import Search from '../search/Search'
 import img from '../../assets/user.png'
+import { useDispatch } from 'react-redux'
+import { showHeader } from '../../context/header/headerSlice'
 
 const AdminHeader = () => {
+
+  const dispatch = useDispatch()
+
   return (
-    <div className="header">
-      <div className="nav">
+    <header className='header'>
+      <nav className='nav'>
         <div className="nav__left">
-          <button className="nav__burger"><IoMdMenu /></button>
+          <h1>Sidebar</h1>
+          <button onClick={() => dispatch(showHeader())} className="nav__burger"><IoMdMenu /></button>
           <Search />
         </div>
         <div className="nav__right">
@@ -23,8 +29,8 @@ const AdminHeader = () => {
             <h3>Moni Roy</h3>
           </div>
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
   )
 }
 

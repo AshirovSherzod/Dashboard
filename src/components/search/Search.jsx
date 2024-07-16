@@ -5,7 +5,7 @@ import './search.scss'
 
 const Search = () => {
     return (
-        <form action="">
+        <form className='search' action="">
             <IoSearchOutline />
             <input type="text" placeholder='Search' />
         </form>
