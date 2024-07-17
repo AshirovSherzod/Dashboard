@@ -9,14 +9,14 @@
     flex-direction: column;
     border-right: 1px solid #d5d5d5;
     gap: 20px;
-    transition: .01s;
+    transition: .1s;
     text-wrap: nowrap;
     z-index: 999;
 
-    span {
-        transition: .7s;
-        z-index: -1;
-    }
+    // span {
+    //     transition: .7s;
+    //     z-index: -1;
+    // }
 
 
     &__hidden {
@@ -26,7 +26,7 @@
 
         p:last-child {
             overflow: hidden;
-            // transition: .3s;
+            transition: .3s;
         }
     }
 
@@ -54,8 +54,26 @@
             border: 3px solid transparent;
             font-weight: 600;
             color: #000;
+            transition: .3s;
         }
 
+    }
+
+}
+
+.logout {
+    margin-top: 500px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 10px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+
+    p:first-child {
+        font-size: 22px;
+        font-weight: 900;
     }
 
 }

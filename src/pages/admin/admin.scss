@@ -4,12 +4,11 @@
 
     &__content {
         margin-left: 300px;
-        // display: flex;
-        // flex: 1;
-        // flex-direction: row;
+        transition: .1s;
     }
 
     &__move {
         margin-left: 80px;
+        transition: .3s;
     }
 }

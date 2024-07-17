@@ -5,10 +5,9 @@ import { HiOutlineDotsVertical } from 'react-icons/hi'
 import TableItem from './TableItem'
 
 const Table = ({ data }) => {
-  console.log(data)
 
   let table = data?.map(el => (
-    <TableItem data={el} />
+    <TableItem key={el._id} data={el} />
   ))
 
   return (

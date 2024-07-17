@@ -25,11 +25,38 @@
         &__left {
             gap: 30px;
             align-items: center;
+        }
 
-            h1 {
-                margin-right: 200px;
+        &__left-profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+
+            &__img {
+                width: 55px;
+                height: 55px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid transparent;
+                border-radius: 50%;
+                background-color: #4880ff;
+                color: #fff;
+                font-size: 24px;
+                font-weight: 600;
             }
 
+            &__title {
+                h1 {
+                    font-size: 22px;
+                    margin-right: 30px;
+                }
+
+                p {
+                    color: gray;
+                }
+            }
         }
 
         &__burger {

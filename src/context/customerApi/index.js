@@ -11,7 +11,7 @@ export const customerApi = api.injectEndpoints({
     }),
     signIn: build.mutation({
       query: (body) => ({
-        url: "/auth/sign-in",
+        url: "/admin/sign-in",
         method: "POST",
         body,
       }),
@@ -34,11 +34,11 @@ export const customerApi = api.injectEndpoints({
       invalidatesTags: ["Customer"],
     }),
     pinCustomer: build.mutation({
-      query: (body) => ({
-        url: "/update/customer",
-        method: "POST",
-        body,
-      }),
+      query: ({ data }) => ({
+        url: `/update/customer/${data._id}`,
+        method: "PATCH",
+        body: { ...data, pin: !data.pin},
+      }), 
       invalidatesTags: ["Customer"],
     }),
   }),

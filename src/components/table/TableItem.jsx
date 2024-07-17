@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 import { TiPin } from 'react-icons/ti'
 import { usePinCustomerMutation } from '../../context/customerApi'
+import { Link } from 'react-router-dom'
+import { IoClose } from 'react-icons/io5'
 
 const pin = {
     fname: "Ramziddin",
@@ -15,22 +17,12 @@ const pin = {
 const TableItem = ({ data }) => {
 
     const [showModal, setShowModal] = useState(false)
-    const [isPin, setIsPin] = useState(false)
-    const [pinCustomer, { data: customerData }] = usePinCustomerMutation()
-    console.log(customerData);
 
-    const handlePinCustomer = () => {
+    const [pinCustomer, { data: qwerty }] = usePinCustomerMutation()
 
-        let pin = {
-            fname: `${data.fname}`,
-            lname: `${data.lname}`,
-            phone_primary: `${data.phone_primary}`,
-            address: `${data.address}`,
-            budget: `${data.budget}`,
-            pin: isPin
-        }
-
-        pinCustomer(pin)
+    const handlePinCustomer = (customerData) => {
+        pinCustomer({data: customerData})
+        console.log(qwerty);
     }
 
     return (
@@ -40,17 +32,16 @@ const TableItem = ({ data }) => {
             <td>{data.fname} {data.lname}</td>
             <td>{data.address}</td>
             <td>{data.phone_primary}</td>
-            <td> <p style={{ backgroundColor: `${data.budget < 0 ? "#ef38264d" : "#00b69b66"}`, color: `${data.budget < 0 ? "red" : "green"}` }}> {data.budget}</p></td>
+            <td> <p style={{ color: `${data.budget < 0 ? "red" : "green"}`, fontWeight: `500` }}> {data.budget}</p></td>
             <td className='td'>
-                <button onClick={() => setShowModal(prev => !prev)}><HiOutlineDotsVertical /></button>
+                <button onClick={() => setShowModal(prev => !prev)}>{showModal ? <IoClose /> : <HiOutlineDotsVertical />}</button>
                 <div className={`td__modal ${showModal ? "td__show" : ""}`}>
                     <button onClick={() => {
-                        setShowModal(prev => !prev)
-                        setIsPin(prev => data.pin ? true : false)
-                        console.log(isPin)
-                        handlePinCustomer()
+                        setShowModal(false)
+                        handlePinCustomer(data)
                     }}
-                    > <span><TiPin /> </span> {data.pin ? "Unpin" : "Pin"}</button>
+                    >{data.pin ? "Unpin" : "Pin"}</button>
+                    <Link onClick={()=> setShowModal(false)} to={`/admin/details/${data._id}`}>Details</Link>
                 </div>
             </td>
         </tr>

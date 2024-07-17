@@ -7,6 +7,7 @@
     border-radius: 10px;
     overflow: hidden;
     font-weight: 400 !important;
+
     // background-color: ;
     p {
         display: flex;
@@ -50,39 +51,63 @@
     &__modal {
         display: none;
         position: absolute;
-        top: -30px;
-        left: -20px;
+        top: -50px;
+        left: -29px;
         right: 0;
         // z-index: 0;
-        width: 100px;
-        height: 50px;
+        width: 100%;
+        height: 100%;
         background-color: #fff;
         border: 1px solid #d5d5d5;
         border-radius: 5px;
-        box-shadow: 2px 2px 3px #d5d5d5;
+        box-shadow: 1px 1px 5px 5px #d5d5d5;
+
+        a {
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            font-size: 14px;
+            // background-color: red;
+            height: 50%;
+            padding-left: 20px;
+        }
 
         button {
             width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center;
+            // justify-content: center;
+            padding-left: 20px;
             gap: 5px;
             border: 1px solid transparent;
-            border: 6px 6px 0px 0px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
             background-color: #fff;
             height: 30px;
             font-size: 14px;
+            border-bottom: 1px solid #d5d5d5;
 
             span {
                 color: #d5d5d5;
                 font-size: 16px;
             }
         }
+
+        button:hover {
+            background-color: rgba(213, 213, 213, .3);
+        }
+
+        a:hover {
+            background-color: rgba(213, 213, 213, .3);
+        }
     }
 
     &__show {
         display: block;
+        flex-direction: column;
+
     }
 }
 
@@ -97,4 +122,3 @@
 // .table th:last-child {
 //     border-radius: 0 14px 0 0;
 // }
-

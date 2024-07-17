@@ -25,6 +25,13 @@ export const adminApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Admin"],
     }),
+    getProfile: build.query({
+      query: (params) => ({
+        url: "/get/profile",
+        params,
+      }),
+      providesTags: ["Admin"],
+    }),
   }),
 });
 
@@ -32,4 +39,5 @@ export const {
   useRegisterAdminMutation,
   useSignInMutation,
   useGetAdminsQuery,
+  useGetProfileQuery,
 } = adminApi;
