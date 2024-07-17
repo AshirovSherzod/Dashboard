@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-    const [username, setUserName] = useState("")
-    const [password, setPassword] = useState("  ")
+    const [username, setUserName] = useState("SherzodAshirov")
+    const [password, setPassword] = useState("31040607")
     const [signIn, { data, isSuccess }] = useSignInMutation()
     const navigate = useNavigate()
 
