@@ -13,7 +13,10 @@ const Login = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (localStorage.getItem('x-auth-token')) navigate("/admin/customer")
+        if (isSuccess){
+            localStorage.getItem('x-auth-token')
+            navigate("/admin/customer")
+        }
 
     }, [isSuccess])
 
@@ -25,7 +28,7 @@ const Login = () => {
         }
         signIn(formData)
         console.log(data);
-        localStorage.setItem('x-auth-token', data.innerData.token)
+        localStorage.setItem('x-auth-token', data?.innerData?.token)
     }
 
 

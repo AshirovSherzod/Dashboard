@@ -9,6 +9,12 @@ export const customerApi = api.injectEndpoints({
       }),
       providesTags: ["Customer"],
     }),
+    getSingleCustomer: build.query({
+      query: (id) => ({
+        url: `/get/customer/${id}`,
+      }),
+      providesTags: ["Customer"],
+    }),
     signIn: build.mutation({
       query: (body) => ({
         url: "/admin/sign-in",
@@ -37,9 +43,22 @@ export const customerApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: `/update/customer/${data._id}`,
         method: "PATCH",
-        body: { ...data, pin: !data.pin},
-      }), 
+        body: { ...data, pin: !data.pin },
+      }),
       invalidatesTags: ["Customer"],
+    }),
+    updateCustomer: build.mutation({
+      query: (id) => ({
+        url: `/update/customer/${id}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["Customer"],
+    }),
+    historyPaymentCustomer: build.query({
+      query: (id) => ({
+        url: `/get/payments/${id}`,
+      }),
+      providesTags: ["Customer"],
     }),
   }),
 });
@@ -50,4 +69,7 @@ export const {
   useGetCustomersQuery,
   useCreateCustomerMutation,
   usePinCustomerMutation,
+  useGetSingleCustomerQuery,
+  useUpdateCustomerMutation,
+  useHistoryPaymentCustomerQuery
 } = customerApi;

@@ -2,9 +2,14 @@ import React from 'react'
 
 import './modal.scss'
 
-const Modal = () => {
+const Modal = ({ children, setPaymentModal }) => {
   return (
-    <div>Modal</div>
+    <>
+      <div className='modal'>
+        {children}
+      </div>
+      <div onClick={()=> setPaymentModal(false)} className="overlay"></div>
+    </>
   )
 }
 

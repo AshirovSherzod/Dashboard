@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useCreateCustomerMutation } from '../../../context/customerApi'
 
 import './createCustomer.scss'
+import PhoneInput from 'react-phone-number-input/input'
 
 const initialState = {
     fname: "",
