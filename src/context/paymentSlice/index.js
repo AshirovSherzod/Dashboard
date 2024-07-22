@@ -10,9 +10,17 @@ export const paymentApi = api.injectEndpoints({
             }),
             invalidatesTags: ["Payment"],
         }),
+        historyPaymentCustomer: build.query({
+            query: (id) => ({
+                url: `/get/payments/${id}`,
+            }),
+            providesTags: ["Payment"],
+        }),
     }),
 });
 
 export const {
     useCreatePaymentMutation,
+    useHistoryPaymentCustomerQuery
+
 } = paymentApi;

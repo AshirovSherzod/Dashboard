@@ -48,17 +48,12 @@ export const customerApi = api.injectEndpoints({
       invalidatesTags: ["Customer"],
     }),
     updateCustomer: build.mutation({
-      query: (id) => ({
+      query: ({ id, ...body }) => ({
         url: `/update/customer/${id}`,
         method: "PATCH",
+        body
       }),
       invalidatesTags: ["Customer"],
-    }),
-    historyPaymentCustomer: build.query({
-      query: (id) => ({
-        url: `/get/payments/${id}`,
-      }),
-      providesTags: ["Customer"],
     }),
   }),
 });
@@ -71,5 +66,4 @@ export const {
   usePinCustomerMutation,
   useGetSingleCustomerQuery,
   useUpdateCustomerMutation,
-  useHistoryPaymentCustomerQuery
 } = customerApi;

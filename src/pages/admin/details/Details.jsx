@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetSingleCustomerQuery, useHistoryPaymentCustomerQuery, useUpdateCustomerMutation } from '../../../context/customerApi'
+import { useGetSingleCustomerQuery, useUpdateCustomerMutation } from '../../../context/customerApi'
+import { useHistoryPaymentCustomerQuery } from '../../../context/paymentSlice'
 import { FaMoneyBillAlt, FaPhone, FaUser } from 'react-icons/fa'
 import { IoClose, IoLocationSharp } from 'react-icons/io5'
 
@@ -22,13 +23,20 @@ const Details = () => {
   const [payment, setPayment] = useState("")
   const [paymentComment, setPaymentComment] = useState("")
 
-  const [fname, setFname] = useState(data?.innerData?.fname)
-  const [lname, setLname] = useState(data?.innerData?.lname)
-  const [phone, setPhone] = useState(data?.innerData?.phone_primary)
-  const [address, setAddres] = useState(data?.innerData?.address)
+  const [fname, setFname] = useState("")
+  const [lname, setLname] = useState("")
+  const [phone, setPhone] = useState("")
+  const [address, setAddress] = useState("")
 
-  console.log(data?.innerData?.fname);
+  useEffect(() => {
 
+    if (data?.innerData) {
+      setFname(data.innerData.fname);
+      setLname(data.innerData.lname);
+      setPhone(data.innerData.phone_primary);
+      setAddress(data.innerData.address);
+    }
+  }, [data]);
 
   const [paymentModal, setPaymentModal] = useState(false)
   const [editCustomer, setEditCustomer] = useState(false)
@@ -49,7 +57,19 @@ const Details = () => {
     createPayment(paymentData)
   }
 
+  const handleUpdateCustomerSubmit = (e) => {
+    e.preventDefault()
+    let newData = {
+      fname,
+      lname,
+      phone_primary: phone,
+      address,
+    }
+    updateCustomer({id: data?.innerData?._id, ...newData})
+  }
+
   const handleChange = (event, value) => {
+    console.log(page);
     setPage(value)
   }
 
@@ -76,7 +96,7 @@ const Details = () => {
           <li><FaMoneyBillAlt /> {formatter.format(data?.innerData?.budget)} so'm</li>
         </ul>
         <div className="details__top-btns">
-          <button onClick={() => setPaymentModal(true)}>Change Payment</button>
+          <button onClick={() => setPaymentModal(true)}>Add Payment</button>
           <button onClick={() => setEditCustomer(true)}>Edit Customer</button>
           <button onClick={() => setHistoryPayment(true)}>History Payment</button>
         </div>
@@ -104,7 +124,7 @@ const Details = () => {
           editCustomer
             ?
             <Modal setPaymentModal={setEditCustomer}>
-              <form className='edit-customer' action="">
+              <form onSubmit={handleUpdateCustomerSubmit} className='edit-customer' action="">
                 <button type='button' onClick={() => setEditCustomer(false)}><IoClose /></button>
                 <div className="edit-customer__input">
                   <label htmlFor="">Fist Name</label>
@@ -120,7 +140,7 @@ const Details = () => {
                 </div>
                 <div className="edit-customer__input">
                   <label htmlFor="">Address</label>
-                  <input value={address} onChange={(e) => setAddres(e.target.value)} name='address' type="text" />
+                  <input value={address} onChange={(e) => setAddress(e.target.value)} name='address' type="text" />
                 </div>
                 <button>Create Customer</button>
               </form>
@@ -135,12 +155,14 @@ const Details = () => {
               <button className='details-table__close' onClick={() => setHistoryPayment(false)}><IoClose /></button>
               <table className='details-table'>
                 <thead>
-                  <th>Admin</th>
-                  <th>Mijoz</th>
-                  <th>To'lov summasi</th>
-                  <th>To'lov turi</th>
-                  <th>To'lov qilingan vaqt</th>
-                  <th>Qoldirilgan sharx</th>
+                  <tr>
+                    <th>Admin</th>
+                    <th>Mijoz</th>
+                    <th>To'lov summasi</th>
+                    <th>To'lov turi</th>
+                    <th>To'lov qilingan vaqt</th>
+                    <th>Qoldirilgan sharx</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {historyPaymentTable}

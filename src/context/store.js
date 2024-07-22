@@ -7,6 +7,7 @@ import { api } from "./api";
 import authSlice from "./authSlice/authSlice";
 import showheaderSlice from "./header/headerSlice";
 import { paymentApi } from "./paymentSlice";
+import { expenseApi } from "./expenceApi";
 
 export const store = configureStore({
   reducer: {
@@ -16,7 +17,9 @@ export const store = configureStore({
     [customerApi.reducerPath]: customerApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [adminApi.reducerPath]: adminApi.reducer,
-    [paymentApi.reducerPath]: paymentApi.reducer
+    [paymentApi.reducerPath]: paymentApi.reducer,
+    [expenseApi.reducerPath]: expenseApi.reducer
+  
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -25,6 +28,8 @@ export const store = configureStore({
       .concat(adminApi.middleware)
       .concat(api.middleware)
       .concat(paymentApi.middleware)
+      .concat(expenseApi.middleware)
+
 });
 
 setupListeners(store.dispatch);

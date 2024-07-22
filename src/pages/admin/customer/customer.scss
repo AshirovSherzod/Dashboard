@@ -1,6 +1,6 @@
 .customer {
     background-color: #F5F6FA;
-    margin-top: 1%;
+    margin-top: 2%;
     min-height: 100vh;
     padding: 80px 0px;
     display: flex;
@@ -11,17 +11,41 @@
         width: 95%;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         gap: 20px;
         margin: 0 auto;
         // margin-bottom: 20px;
 
+
+    }
+
+    &__top-select {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #d5d5d5;
+
+
         select {
-            width: 120px;
+            // width: 140px;
             height: 60px;
-            border: 1px solid #d5d5d5;
+            border: 1px solid transparent;
+            border-right: 1px solid #d5d5d5;
             outline: none;
             padding-left: 10px;
-            font-size: 16px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 140px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            background-color: #fff;
+
+            
         }
     }
 }

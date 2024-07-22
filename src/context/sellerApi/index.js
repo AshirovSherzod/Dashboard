@@ -25,6 +25,14 @@ export const sellerApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Seller"],
     }),
+    pinSeller: build.mutation({
+      query: ({ data }) => ({
+        url: `/update/seller/${data._id}`,
+        method: "PATCH",
+        body: { ...data, pin: !data.pin },
+      }),
+      invalidatesTags: ["Seller"],
+    }),
   }),
 });
 
@@ -32,4 +40,5 @@ export const {
   useGetSellersQuery,
   useRegisterSellerMutation,
   useLoginSellerMutation,
+  usePinSellerMutation,
 } = sellerApi;
