@@ -37,6 +37,10 @@ const Sidebar = () => {
           <p><FaStore /></p>
           <p>Store</p>
         </NavLink>
+        <NavLink to={"/admin/createproducts"}>
+          <p><FaStore /></p>
+          <p>Create Products</p>
+        </NavLink>
       </ul>
       <div onClick={handleLogout} className="logout">
         <p><MdLogout /></p>

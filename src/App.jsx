@@ -7,6 +7,7 @@ import CreateCustomer from "./pages/admin/createCustomer/CreateCustomer"
 import Details from "./pages/admin/details/Details"
 import Auth from "./pages/auth/Auth"
 import Login from "./pages/login/Login"
+import CreateProducts from "./pages/admin/createProducts/CreateProducts"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="customer/:id" element={<Details />} />
             <Route path="seller" element={<Seller />} />
             <Route path="store" element={<Store />} />
+            <Route path="createproducts" element={<CreateProducts />} />
           </Route>
         </Route>
       </Routes>

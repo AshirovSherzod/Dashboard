@@ -33,6 +33,13 @@ export const sellerApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Seller"],
     }),
+    getSellersSearch: build.query({
+      query: (params) => ({
+        url: "get/sellers/search",
+        params,
+      }),
+      providesTags: ["Seller"],
+    }),
   }),
 });
 
@@ -41,4 +48,5 @@ export const {
   useRegisterSellerMutation,
   useLoginSellerMutation,
   usePinSellerMutation,
+  useGetSellersSearchQuery
 } = sellerApi;
